@@ -2,49 +2,74 @@
     background-color: #000000;
     box-shadow: 0 -10px 80px rgba(255, 255, 255, 0.3);
     border-bottom: 0.5px solid rgb(45, 45, 45);
-	display: flex;
+    display: flex;
     justify-content: space-between;
-    }
-
-/* Logo-ul */
-.logo {
-    display: inline-block;
+    padding: 10px; /* Adaugă padding pentru a asigura spațiu în jurul elementelor */
 }
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center; /* Centrare pe verticală */
+}
+
+.logo {
+    display: flex;
+    align-items: center; /* Centrare pe verticală */
+}
+
+.nav-right {
+    display: flex;
+    align-items: center; /* Centrare pe verticală */
+}
+
 .navbar ul {
     display: flex;
-    justify-content: center; /* Aici centrăm conținutul în cadrul <ul> */
-    align-items: center; /* Aici centram pe verticală */
-    margin: 10px; /* Asigură-te că nu există niciun margin aplicat pe <ul> */
-    padding: 10px; /* Asigură-te că nu există niciun padding aplicat pe <ul> */
+    align-items: center; /* Centrare pe verticală */
+    margin: 0; /* Asigură-te că nu există niciun margin aplicat pe <ul> */
+    padding: 0; /* Asigură-te că nu există niciun padding aplicat pe <ul> */
 }
+
 .navbar a {
-    display: flex; /* Așigură-te că link-urile sunt elemente flexibile */
-    align-items: center; /* Aici centram pe verticală */
+    display: flex; /* Asigură-te că link-urile sunt elemente flexibile */
+    align-items: center; /* Centrare pe verticală */
+    color: rgb(221, 220, 212);
+    border-color: 3px white;
 }
+
 .navbar img {
     display: block; /* Asigură-te că imaginea este un element de tip block */
     margin: 0; /* Elimină orice margin aplicat implicit */
     padding: 0; /* Elimină orice padding aplicat implicit */
 }
-.buton{
+
+.buton {
     padding: 10px;
     margin: 10px;
     border-radius: 30px;
     color: rgb(221, 220, 212);
 }
-.buton a:hove{
-    background-color: azure;
+
+.buton a:hover {
+    background-color: transparent;
 }
+
 /* Stilizare navbar pe dispozitive mobile */
 @media screen and (max-width: 768px) {
     .navbar {
-        justify-content: center; /* Centrare pe dispozitive mobile */
+        flex-direction: column;
+        align-items: center; /* Centrare pe dispozitive mobile */
     }
-    /* Logo-ul va fi centrat pe dispozitive mobile */
+    .nav-links {
+        flex-direction: column;
+        width: auto;
+    }
     .logo {
         text-align: center;
+        margin-bottom: 10px;
     }
-    .buton{
+    .nav-right {
         justify-content: center;
     }
 }

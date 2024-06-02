@@ -1,8 +1,14 @@
 <div>
 	<nav class="navbar">
-		<ul class="logo">
-			<li class="logo"><a href="home"><img src="./assets/images/logo3.png" alt="logo" width="100"></a></li>
-		</ul>
-		<button class="buton"><a href="user"><img src="./assets/images/auth.png" alt="authentification" width="35" height="35"></a></button>
+		<div class="nav-links">
+			<ul class="logo">
+				<li class="logo"><a href="home"><img src="./assets/images/logo3.png" alt="logo" width="100"></a></li>
+			</ul>
+			
+			<div class="nav-right">
+				<div *ngIf="(isLog())"><a style="cursor: pointer;" (click)="onLogout()" routerLinkActive='active'>DECONECTARE</a></div>
+				<button class="buton"><a href="user"><img src="./assets/images/auth.png" alt="authentification" width="35" height="35"></a></button>
+			</div>
+		</div>
 	</nav>
 </div>
