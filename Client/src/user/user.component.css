@@ -1,0 +1,31 @@
+.auth-form {
+    display: flex;
+    flex-direction: column; /* Elemente aranjate vertical */
+    align-items: center;
+    margin: 20px auto;
+    width: 50%; /* Setăm lățimea să fie aceeași ca la login-form */
+}
+.auth-header {
+    display: flex;
+    justify-content: center;
+    /*width: 100%; /* Lățimea să fie aceeași ca la auth-form */
+    margin-bottom: 0; /* Elimină marginea de jos pentru a fi lipită de login-form */
+    border: 1px rgb(86, 86, 86) solid;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.buton-user {
+    background-color: black;
+    color: rgb(230, 229, 222);
+    padding: 15px 45px;
+    border: 1px white solid;
+}
+.buton-user a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+.buton-user:hover {
+    cursor: pointer;
+    background-color: rgb(86, 86, 86);
+}

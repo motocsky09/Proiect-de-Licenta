@@ -1,0 +1,50 @@
+.navbar {
+    background-color: #000000;
+    box-shadow: 0 -10px 80px rgba(255, 255, 255, 0.3);
+    border-bottom: 0.5px solid rgb(45, 45, 45);
+	display: flex;
+    justify-content: space-between;
+    }
+
+/* Logo-ul */
+.logo {
+    display: inline-block;
+}
+.navbar ul {
+    display: flex;
+    justify-content: center; /* Aici centrăm conținutul în cadrul <ul> */
+    align-items: center; /* Aici centram pe verticală */
+    margin: 10px; /* Asigură-te că nu există niciun margin aplicat pe <ul> */
+    padding: 10px; /* Asigură-te că nu există niciun padding aplicat pe <ul> */
+}
+.navbar a {
+    display: flex; /* Așigură-te că link-urile sunt elemente flexibile */
+    align-items: center; /* Aici centram pe verticală */
+}
+.navbar img {
+    display: block; /* Asigură-te că imaginea este un element de tip block */
+    margin: 0; /* Elimină orice margin aplicat implicit */
+    padding: 0; /* Elimină orice padding aplicat implicit */
+}
+.buton{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 30px;
+    color: rgb(221, 220, 212);
+}
+.buton a:hove{
+    background-color: azure;
+}
+/* Stilizare navbar pe dispozitive mobile */
+@media screen and (max-width: 768px) {
+    .navbar {
+        justify-content: center; /* Centrare pe dispozitive mobile */
+    }
+    /* Logo-ul va fi centrat pe dispozitive mobile */
+    .logo {
+        text-align: center;
+    }
+    .buton{
+        justify-content: center;
+    }
+}
