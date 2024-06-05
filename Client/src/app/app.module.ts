@@ -13,10 +13,8 @@ import { FooterComponent } from 'src/footer/footer.component';
 import { UserModule } from 'src/user/user.module';
 import { UserService } from 'src/services/user.service';
 import { RegisterComponent } from 'src/user/register/register.component';
-
-
-
-
+import { ProductsListComponent } from '../product/products-list/products-list.component';
+import { ProductModule } from 'src/product/product.module';
 
 @NgModule({
   declarations: [
@@ -31,9 +29,7 @@ import { RegisterComponent } from 'src/user/register/register.component';
     HomeModule,
     UserModule,
     HttpClientModule,
-    ToastrModule.forRoot({
-      progressBar: true
-    }),
+    ProductModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

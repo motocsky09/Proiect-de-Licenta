@@ -1,4 +1,6 @@
 ﻿using Server.Entities;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Server.Repositories
 {

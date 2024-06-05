@@ -6,7 +6,7 @@
 			</ul>
 			
 			<div class="nav-right">
-				<div *ngIf="(isLog())"><a style="cursor: pointer;" (click)="onLogout()" routerLinkActive='active'>DECONECTARE</a></div>
+				<div *ngIf="(isLog())"><a class="logout-link" style="cursor: pointer;" (click)="onLogout()" routerLinkActive='active'>DECONECTARE</a></div>
 				<button class="buton"><a href="user"><img src="./assets/images/auth.png" alt="authentification" width="35" height="35"></a></button>
 			</div>
 		</div>

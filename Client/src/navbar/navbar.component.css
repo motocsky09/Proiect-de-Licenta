@@ -34,10 +34,17 @@
 .navbar a {
     display: flex; /* Asigură-te că link-urile sunt elemente flexibile */
     align-items: center; /* Centrare pe verticală */
-    color: rgb(221, 220, 212);
-    border-color: 3px white;
 }
-
+.logout-link{
+    padding: 4px 6px;
+    margin-left: 10px; /* Adaugă spațiu între link-uri */
+    color: #fff; /* Culoarea textului */
+    text-decoration: none; /* Elimină sublinierea implicită */
+    border: 1px solid transparent;
+}
+.logout-link:hover{
+    border-color: rgb(221, 220, 212); /* Schimbă culoarea border-ului la hover */
+}
 .navbar img {
     display: block; /* Asigură-te că imaginea este un element de tip block */
     margin: 0; /* Elimină orice margin aplicat implicit */

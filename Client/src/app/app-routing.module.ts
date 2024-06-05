@@ -7,14 +7,7 @@ import { UserComponent } from 'src/user/user.component';
 
 const routes: Routes = [
   { path:'', redirectTo:'/home', pathMatch:'full' },
-  { path:'home', component: HomeComponent},
-  {
-    path: 'user', component: UserComponent,
-    children: [
-      { path: 'register', component: RegisterComponent },
-      { path: 'login', component: LoginComponent }
-    ]
-  }
+  { path:'home', component: HomeComponent}
 ];
 
 

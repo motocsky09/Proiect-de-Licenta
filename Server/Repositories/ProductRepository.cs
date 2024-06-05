@@ -25,7 +25,8 @@ namespace Server.Repositories
                 Price = model.Price,
                 ShortDescription = model.ShortDescription,
                 TotalQuantity = model.TotalQuantity,
-                CategoryId = model.CategoryId
+                CategoryId = model.CategoryId,
+                ImagePath = model.ImagePath
             };
             _serverDbContext.Product.Add(product);
             _serverDbContext.SaveChanges();
@@ -41,6 +42,7 @@ namespace Server.Repositories
                 existingProduct.ShortDescription = model.ShortDescription;
                 existingProduct.TotalQuantity = model.TotalQuantity;
                 existingProduct.CategoryId = model.CategoryId;
+                existingProduct.ImagePath = model.ImagePath;
 
                 _serverDbContext.SaveChanges();
             }
