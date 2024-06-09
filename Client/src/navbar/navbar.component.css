@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #000000;
+    background-color: #0F0F0F;
     box-shadow: 0 -10px 80px rgba(255, 255, 255, 0.3);
     border-bottom: 0.5px solid rgb(45, 45, 45);
     display: flex;
@@ -61,22 +61,22 @@
 .buton a:hover {
     background-color: transparent;
 }
-
-/* Stilizare navbar pe dispozitive mobile */
 @media screen and (max-width: 768px) {
+
     .navbar {
-        flex-direction: column;
-        align-items: center; /* Centrare pe dispozitive mobile */
+        flex-direction: row;
+        justify-content: space-between; /* Așezarea elementelor pe întreaga lățime a ecranului */
+        align-items: center; /* Alinierea verticală a elementelor */
     }
-    .nav-links {
-        flex-direction: column;
-        width: auto;
-    }
+
     .logo {
-        text-align: center;
-        margin-bottom: 10px;
+        margin: 0 auto; /* Centrarea logo-ului pe orizontală */
+        display: flex; /* Asigură că logo-ul este tratat ca un element flexibil */
+        justify-content: center; /* Centrarea conținutului în logo */
+        align-items: center; /* Alinierea conținutului în logo */
     }
+
     .nav-right {
-        justify-content: center;
+        margin-left: auto; /* Așezarea elementului nav-right în partea dreaptă */
     }
 }

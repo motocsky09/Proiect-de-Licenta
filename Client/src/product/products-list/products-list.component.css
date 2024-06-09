@@ -9,28 +9,30 @@
     margin: 0;
     text-align: center;
 }
-.filter-button {
-    padding: 10px 20px; 
-    background-color: #007bff; 
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-.filter-button:hover {
-    background-color: #0056b3;
-}
-.filter-icon {
-    margin-right: 5px;
-}
 .desc_product {
     color: rgb(88, 88, 88);
     font-size: 20px;
     text-align: center;
 }
-.product img {
+/* Stilurile pentru butoanele de filtrare */
+.buton_filter {
+    background-color: #000; /* Culoare de fundal */
+    color: #fff; /* Culoare text */
+    border: 1px solid #ccc; /* Margine */
+    padding: 10px 20px; /* Spațiere internă */
+    margin: 5px; /* Spațiere externă */
+    cursor: pointer; /* Cursor pointer la hover */
+    font-size: 16px; /* Dimensiune text */
+    border-radius: 5px; /* Colțuri rotunjite */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Tranziții pentru hover */
+}
+
+.buton_filter:hover {
+    background-color: #555; /* Culoare de fundal la hover */
+    color: #fff; /* Culoare text la hover */
+}
+
+img {
     width: 400px; 
     height: 400px;
     border-radius: 20px;
@@ -40,7 +42,7 @@
     text-decoration: none;
 }
 .button_product:hover{
-    background-color: white;
+    background-color: rgb(230,229,222);
     color: rgb(8,24,69);
 }
 .quantity-container {
@@ -55,17 +57,16 @@
     margin-right: auto;
 }
 .quantity-input {
-    color: white;
+    color: rgb(230,229,222);
     background: black;
     border: none;
-    width: calc(100% - 25px);
-    border-radius: 10%;
+    width: calc(100% - 15px);
     padding: 5px 15px;
     margin-top: 5px;   
 }
 .button_product {
     background: black;
-    color: white;
+    color: rgb(230,229,222);
     border-radius: 10px;
     border: 2px solid grey;
     padding: 5px 15px;
@@ -87,31 +88,49 @@
     right: 20px;
     background-color: black;
     color: white;
-    padding: 10px 10px;
+    padding: 15px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
     z-index: 1000;
-    
-}
-#cartButton:hover {
-    background-color: black;
-}
-.cart-button a:hover{
-    
-    color: white;
 }
 
+#cartButton a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(230,229,222);
+    text-decoration: none;
+}
 #cartItemCount {
     position: absolute;
-    top: 6px;
-    right: 8px;
+    top: -4px;
+    right: -4.5px;
     background-color: red;
     color: white;
     font-size: 12px;
     padding: 3px 6px;
     border-radius: 50%;
 }
+#cartButton:hover {
+    background-color: #f2f2f2;
+}
+.cart-button a:hover{
+    background-color: #f2f2f2;
+    color: black;
+}
+
+.Short_description {
+    padding: 10px 15px;
+    border-bottom: 1px solid black;
+    color: black;
+    display: inline-block; /* schimbare importantă */
+    font-size: 17px;
+}
+
+
+
 .pret_produs{
     display: block;
     color: black;
@@ -138,11 +157,11 @@
     text-align: center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-}
+}/*
 .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
+    /*transform: rotateY(180deg);
     /*opacity: 0.3;*/
-}
+
 .flip-card-front, .flip-card-back {
     position: absolute;
     width: 100%;
@@ -202,20 +221,22 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .product img {
+    img {
         width: 100%;
         height: auto;
         display: block;
         margin: 0 auto;
+        padding: 10px;
     }
     .filter{
         width: 100%;
+        height: auto;
         margin-left:0 auto;
         margin-right:0 auto;
-        padding-bottom: 20px;
+        padding-bottom: 10px;
     }
     .buton_filter{
-        font-size: 17px;
+        font-size: 15px;
     }
 	.product ul{
 		list-style: none;
@@ -229,30 +250,19 @@
 		display: inline-block;
 	}
     #cartButton {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 60px;
-        padding: 5px;
-        text-align: center;
-        background-color: none;
-        color: white;
-        border-radius: 5px;
-        z-index: 1000;
+        width: 50px;
+        height: 50px;
+        padding-top: 3px;
+        padding-bottom: 1px;
+        transition: all 0.3s ease;
     }
     #cartItemCount {
-        position: absolute;
-        top: 3px;
-        right: 3px;
-        background-color: red;
-        color: white;
-        font-size: 10px;
-        padding: 2px 4px;
-        border-radius: 50%;
+        top: -3px;
+        right: -3px;
+        font-size: 12px;
+        padding: 3px 6px;
     }
     #cartButton a {
-        display: inline-block;
-        vertical-align: middle;
         padding: 7px;
         margin: 0;
     }
