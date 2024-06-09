@@ -1,4 +1,4 @@
-/*document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
     var flipCards = document.querySelectorAll('.flip-card');
     
    
@@ -23,4 +23,4 @@
             }
         });
     });
-});*/
+})

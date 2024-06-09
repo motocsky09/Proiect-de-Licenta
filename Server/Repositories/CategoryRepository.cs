@@ -16,7 +16,7 @@ namespace Server.Repositories
             return _serverDbContext.Category.FirstOrDefault(x => x.Id == categoryid);
         }
 
-            public List<Category> GetCategory() 
+            public List<Category> GetCategories() 
         {
             return _serverDbContext.Category.ToList();
         }

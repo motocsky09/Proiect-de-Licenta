@@ -27,12 +27,13 @@ namespace Server.Controllers
         }
 
         [HttpGet]
-        [Route("GetCategory")]
-        public ActionResult GetCategorys()
+        [Route("GetCategories")]
+        public ActionResult GetCategories()
         {
-            var result = _categoryRepository.GetCategory();
+            var result = _categoryRepository.GetCategories();
             return Ok(result);
         }
+
 
         [HttpPost]
         [Route("CreateCategory")]

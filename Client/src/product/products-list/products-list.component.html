@@ -1,9 +1,9 @@
 <div class="product">
     <div class="filter">
-        <button class="buton_filter" onclick="filterProducts('all')"><b>Toate</b><i class="fa fa-filter" aria-hidden="true"></i></button>
-        <button class="buton_filter" onclick="filterProducts('Office')"><b>Office</b></button>
-        <button class="buton_filter" onclick="filterProducts('Toys')"><b>Toys</b></button>
-        <button class="buton_filter" onclick="filterProducts('Diverse')"><b>Diverse</b></button>
+        <button class="buton_filter" (click)="getProductsList()"><b>Toate</b><i class="fa fa-filter" aria-hidden="true"></i></button>
+        <button class="buton_filter" (click)="getProductsListByCategoryId(5)"><b>Office</b></button>
+        <button class="buton_filter" (click)="getProductsListByCategoryId(6)"><b>Toys</b></button>
+        <button class="buton_filter" (click)="getProductsListByCategoryId(7)"><b>Diverse</b></button>
 </div>
 <ul *ngFor="let item of productsList">
     <li class="product-item" data-category="Office">
@@ -23,10 +23,14 @@
         </div>
     </div>
         <div class="details">
-            <h3 class="pret_produs"><b>Preț: {{item.price}} (€)</b></h3>
+            <h3 class="pret_produs"><b>Preț:</b> {{item.price}} (€)</h3>
             <div class="quantity-container">
                 <input type="number" class="quantity-input" value="1" min="1">
             </div>
         </div>
         <button class="button_product" onclick="addToCart(event)">Adaugă în coș</button>
     </li>
+	<div class="cart-button" id="cartButton">
+		<a href="cos_de_cumparaturi.html"><fa-icon [icon]="faCartShopping" style="height: 50px !important; width: 50px !important; color: white;"></fa-icon>Coș</a>
+		<span id="cartItemCount">0</span>
+	</div>

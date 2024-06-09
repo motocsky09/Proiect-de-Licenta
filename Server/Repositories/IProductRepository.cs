@@ -6,6 +6,8 @@ namespace Server.Repositories
     {
         public Product GetProductById (int productid);
         public List<Product> GetProducts();
+
+        public List<Product> GetProductsByCategoryId(int categoryId);
         public void CreateProduct(Product model);
 
         public void UpdateProduct(Product model);

@@ -34,6 +34,14 @@ namespace Server.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("GetProductsByCategoryId")]
+        public ActionResult GetProductsByCategoryId(int categoryId)
+        {
+            var result = _productRepository.GetProductsByCategoryId(categoryId);
+            return Ok(result);
+        }
+
         [HttpPost]
         [Route("CreateProduct")]
         public ActionResult CreateProduct(Product product)

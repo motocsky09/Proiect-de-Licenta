@@ -17,6 +17,10 @@ namespace Server.Repositories
         {
             return _serverDbContext.Product.ToList();
         }
+        public List<Product> GetProductsByCategoryId(int categoryId)
+        {
+            return _serverDbContext.Product.Where(x => x.CategoryId == categoryId).ToList();
+        }
         public void CreateProduct(Product model)
         {
             var product = new Product

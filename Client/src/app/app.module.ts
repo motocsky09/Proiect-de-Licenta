@@ -15,6 +15,8 @@ import { UserService } from 'src/services/user.service';
 import { RegisterComponent } from 'src/user/register/register.component';
 import { ProductsListComponent } from '../product/products-list/products-list.component';
 import { ProductModule } from 'src/product/product.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ShoppingCartModule } from 'src/shopping-cart/shopping-cart.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ProductModule } from 'src/product/product.module';
     HomeModule,
     UserModule,
     HttpClientModule,
-    ProductModule
+    ProductModule,
+    FontAwesomeModule,
+    ShoppingCartModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
