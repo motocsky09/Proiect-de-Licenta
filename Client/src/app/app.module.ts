@@ -17,6 +17,7 @@ import { ProductsListComponent } from '../product/products-list/products-list.co
 import { ProductModule } from 'src/product/product.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShoppingCartModule } from 'src/shopping-cart/shopping-cart.module';
+import { OrderModule } from 'src/order/order.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ShoppingCartModule } from 'src/shopping-cart/shopping-cart.module';
     HttpClientModule,
     ProductModule,
     FontAwesomeModule,
-    ShoppingCartModule
+    ShoppingCartModule,
+    OrderModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

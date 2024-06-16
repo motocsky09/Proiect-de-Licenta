@@ -16,6 +16,5 @@ namespace Server
         public DbSet<Product> Product { get; set; }
         public DbSet<ProductAddedShCart> ProductAddedShCart { get; set; }
         public DbSet<ShoppingCart> ShoppingCart { get; set; }
-        public DbSet<User> User { get; set; }
     }
 }

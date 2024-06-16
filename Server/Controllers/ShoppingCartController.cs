@@ -57,5 +57,14 @@ namespace Server.Controllers
             _shoppingcartRepository.DeleteShoppingCart(shoppingcartId);
             return Ok();
         }
+
+        [HttpPost]
+        [Route("CreateFirstShoppingCartByUsername")]
+        public ActionResult CreateFirstShoppingCartByUsername(string userName)
+        {
+            
+            var res = _shoppingcartRepository.CreateFirstShoppingCartByUsername(userName);
+            return Ok(res);
+        }
     }
 }

@@ -11,6 +11,7 @@ import { BehaviorSubject } from 'rxjs';
 export class UserService {
 
   public isLoggedIn$!: BehaviorSubject<boolean>;
+  public userName: any;
   
   constructor(
     private fb:FormBuilder,
@@ -57,6 +58,7 @@ export class UserService {
       Email: this.formModel.value.Email,
       Password: this.formModel.value.Passwords.Password
     };
+    this.userName=body.UserName;
     return this.http.post(this.BaseURI+'/Authenticate/register',body);
   }
 

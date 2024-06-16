@@ -27,7 +27,14 @@ namespace Server.Repositories
                 OrderDate = model.OrderDate,
                 OrderStatus = model.OrderStatus,
                 DeliveryPrice = model.DeliveryPrice,
-                Totalamount = model.Totalamount
+                Totalamount = model.Totalamount,
+                Adress = model.Adress,
+                Street_no = model.Street_no,
+                Zip_code = model.Zip_code,
+                Phone_number = model.Phone_number,
+                Email = model.Email,
+                Comments = model.Comments,
+                Payment_method = model.Payment_method
             };
             _serverDbContext.Order.Add(order);
             _serverDbContext.SaveChanges();
@@ -44,7 +51,14 @@ namespace Server.Repositories
                 existingOrder.OrderDate = model.OrderDate;
                 existingOrder.OrderStatus = model.OrderStatus;
                 existingOrder.DeliveryPrice = model.DeliveryPrice; 
-                existingOrder.Totalamount = model.Totalamount;  
+                existingOrder.Totalamount = model.Totalamount;
+                existingOrder.Adress = model.Adress;
+                existingOrder.Street_no = model.Street_no;
+                existingOrder.Zip_code = model.Zip_code;
+                existingOrder.Phone_number = model.Phone_number;
+                existingOrder.Email = model.Email;
+                existingOrder.Comments = model.Comments;
+                existingOrder.Payment_method = model.Payment_method;
 
                 _serverDbContext.SaveChanges();
             }

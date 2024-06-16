@@ -31,8 +31,8 @@ h1{
     margin: 20px auto;
 }
 .buton a:hover{
-    background-color: rgb(230,229,222);
-    color: black;
+	background-color: #555;
+    color: white;
 }
 
 .show {

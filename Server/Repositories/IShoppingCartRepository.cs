@@ -9,5 +9,7 @@ namespace Server.Repositories
         public void CreateShoppingCart(ShoppingCart model);
         public void UpdateShoppingCart(ShoppingCart model);
         public void DeleteShoppingCart (int shoppingcartId);
+
+        public ShoppingCart CreateFirstShoppingCartByUsername(string username);
     }
 }

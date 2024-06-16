@@ -5,11 +5,13 @@ namespace Server.Repositories
     public class ShoppingCartRepository : IShoppingCartRepository
     {
         private readonly ServerDbContext _serverDbContext;
-        public ShoppingCartRepository(ServerDbContext serverDbContext)
+        private readonly IdentityContext _identityContext;
+        public ShoppingCartRepository(ServerDbContext serverDbContext, IdentityContext identityContext)
         {
             _serverDbContext = serverDbContext;
+            _identityContext = identityContext;
         }
-        public ShoppingCart GetShoppingCartById(int shoppingCartId)
+        public ShoppingCart GetShoppingCartById(string shoppingCartId)
         {
             return _serverDbContext.ShoppingCart.FirstOrDefault(x => x.Id == shoppingCartId);
         }
@@ -42,7 +44,7 @@ namespace Server.Repositories
                 _serverDbContext.SaveChanges();
             }
         }
-        public void DeleteShoppingCart (int shoppingCartId)
+        public void DeleteShoppingCart (string shoppingCartId)
         {
             var shoppingcartToDelete = _serverDbContext.ShoppingCart.FirstOrDefault(p => p.Id == shoppingCartId);
             if (shoppingcartToDelete != null)
@@ -50,6 +52,23 @@ namespace Server.Repositories
                 _serverDbContext.ShoppingCart.Remove(shoppingcartToDelete);
                 _serverDbContext.SaveChanges();
             }
+        }
+        public ShoppingCart CreateFirstShoppingCartByUsername(string userName)
+        {
+            var userId = _identityContext.Users.FirstOrDefault(x => x.UserName == userName).Id;
+            var shoppingCartId = Guid.NewGuid().ToString();
+
+            var result = new ShoppingCart
+            {
+                Id = shoppingCartId,
+                UserId = userId,
+                ProductAddedShCartId = 0,
+                TotalAmount = 0
+
+            };
+            _serverDbContext.ShoppingCart.Add(result);
+            _serverDbContext.SaveChanges();
+            return result;
         }
     }
 }

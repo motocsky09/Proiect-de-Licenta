@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ShoppingCartService } from 'src/services/shopping-cart.service';
 import { UserService } from 'src/services/user.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { UserService } from 'src/services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(public service: UserService , private router:Router) { }
+  constructor(public service: UserService,public shoppingCartService: ShoppingCartService , private router:Router) { }
 
   ngOnInit(): void {
     this.service.formModel.reset();
@@ -20,6 +21,7 @@ export class RegisterComponent implements OnInit {
     this.service.register().subscribe(
       (res:any) => {
         {
+          this.createFirstShoppingCartByUsername();
           this.service.formModel.reset();
           this.router.navigateByUrl('/user/login');
         }
@@ -28,5 +30,10 @@ export class RegisterComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  createFirstShoppingCartByUsername()
+  {
+    this.shoppingCartService.createFirstShoppingCartByUsername(this.service.userName).subscribe();
   }
 }
