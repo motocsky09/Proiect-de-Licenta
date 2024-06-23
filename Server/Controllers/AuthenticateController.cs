@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -74,6 +75,19 @@ namespace Server.Controllers
 
             return Ok(new ResponseModel { Status = "Success", Message = "User created successfully!" });
 
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("GetUserName")]
+        public async Task<Object> GetUserProfile()
+        {
+            string userId = User.Claims.First(c => c.Type == "Id").Value;
+            var user = await _userManager.FindByIdAsync(userId);
+            return new
+            {
+                user.UserName
+            };
         }
 
         private JwtSecurityToken GetToken(List<Claim> authClaims)

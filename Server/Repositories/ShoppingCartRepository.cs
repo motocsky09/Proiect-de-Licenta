@@ -55,20 +55,44 @@ namespace Server.Repositories
         }
         public ShoppingCart CreateFirstShoppingCartByUsername(string userName)
         {
-            var userId = _identityContext.Users.FirstOrDefault(x => x.UserName == userName).Id;
-            var shoppingCartId = Guid.NewGuid().ToString();
+            string userId = null;
+            string shoppingcart = null;
 
-            var result = new ShoppingCart
+            if (!string.IsNullOrEmpty(userName))
             {
-                Id = shoppingCartId,
-                UserId = userId,
-                ProductAddedShCartId = 0,
-                TotalAmount = 0
+                var user = _identityContext.Users.FirstOrDefault(x => x.UserName == userName);
+                if (user != null)
+                {
+                    userId = user.Id;
+                }
+            }
 
-            };
-            _serverDbContext.ShoppingCart.Add(result);
-            _serverDbContext.SaveChanges();
-            return result;
+            if (!string.IsNullOrEmpty(userId))
+            {
+                var cart = _serverDbContext.ShoppingCart.FirstOrDefault(p => p.UserId == userId);
+                if (cart != null)
+                {
+                    shoppingcart = cart.Id;
+                }
+            }
+
+            if (string.IsNullOrEmpty(shoppingcart))
+            {
+                var shoppingCartId = Guid.NewGuid().ToString();
+
+                var result = new ShoppingCart
+                {
+                    Id = shoppingCartId,
+                    UserId = userId,
+                    ProductAddedShCartId = 0,
+                    TotalAmount = 0
+                };
+
+                _serverDbContext.ShoppingCart.Add(result);
+                _serverDbContext.SaveChanges();
+                return result;
+            }
+            return new ShoppingCart(); // sau poți returna `null` dacă preferi să indic că nu a fost creat un nou coș de cumpărături
         }
     }
 }

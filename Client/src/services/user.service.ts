@@ -58,12 +58,12 @@ export class UserService {
       Email: this.formModel.value.Email,
       Password: this.formModel.value.Passwords.Password
     };
-    this.userName=body.UserName;
     return this.http.post(this.BaseURI+'/Authenticate/register',body);
   }
 
    login(formData: any)
   {
+    this.userName=formData.username;
     return this.http.post(this.BaseURI+'/Authenticate/login',formData);
   }
 

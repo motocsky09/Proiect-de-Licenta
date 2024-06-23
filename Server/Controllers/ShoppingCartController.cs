@@ -20,7 +20,7 @@ namespace Server.Controllers
 
         [HttpGet]
         [Route("GetShoppingCartById")]
-        public ActionResult GetShoppingCartById(int shoppingcartId)
+        public ActionResult GetShoppingCartById(string shoppingcartId)
         {
             var result = _shoppingcartRepository.GetShoppingCartById(shoppingcartId);
             return Ok(result);
@@ -52,7 +52,7 @@ namespace Server.Controllers
 
         [HttpDelete]
         [Route("DeleteShoppingCart")]
-        public ActionResult DeleteShoppingCart(int shoppingcartId)
+        public ActionResult DeleteShoppingCart(string shoppingcartId)
         {
             _shoppingcartRepository.DeleteShoppingCart(shoppingcartId);
             return Ok();
