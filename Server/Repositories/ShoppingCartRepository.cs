@@ -92,7 +92,7 @@ namespace Server.Repositories
                 _serverDbContext.SaveChanges();
                 return result;
             }
-            return new ShoppingCart(); // sau poți returna `null` dacă preferi să indic că nu a fost creat un nou coș de cumpărături
+            return null;
         }
     }
 }

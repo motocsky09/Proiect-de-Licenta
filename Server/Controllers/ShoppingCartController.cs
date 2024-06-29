@@ -60,9 +60,8 @@ namespace Server.Controllers
 
         [HttpPost]
         [Route("CreateFirstShoppingCartByUsername")]
-        public ActionResult CreateFirstShoppingCartByUsername(string userName)
+        public ActionResult CreateFirstShoppingCartByUsername([FromQuery]string userName)
         {
-            
             var res = _shoppingcartRepository.CreateFirstShoppingCartByUsername(userName);
             return Ok(res);
         }

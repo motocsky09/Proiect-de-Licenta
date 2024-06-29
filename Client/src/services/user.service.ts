@@ -11,7 +11,6 @@ import { BehaviorSubject } from 'rxjs';
 export class UserService {
 
   public isLoggedIn$!: BehaviorSubject<boolean>;
-  public userName: any;
   
   constructor(
     private fb:FormBuilder,
@@ -63,7 +62,6 @@ export class UserService {
 
    login(formData: any)
   {
-    this.userName=formData.username;
     return this.http.post(this.BaseURI+'/Authenticate/login',formData);
   }
 
@@ -75,10 +73,9 @@ export class UserService {
     localStorage.removeItem('token');
   }
 
-  getUserName()
-  {
-    var tokenHeader = new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('token')})
-    return this.http.get(this.BaseURI+'/UserProfile',{headers : tokenHeader});
+  getUserName() {
+    var tokenHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('token')});
+    return this.http.get(this.BaseURI + '/Authenticate/GetUserName', { headers: tokenHeader, responseType: 'text' });
   }
 
   isLogged(): boolean

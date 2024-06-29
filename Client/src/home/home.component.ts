@@ -8,19 +8,27 @@ import { UserService } from 'src/services/user.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
+
+  userName:any;
 
   constructor(
     private userService: UserService,
-    private router:Router,
+    private router: Router,
     private shoppingCartService: ShoppingCartService
-  ){ }
+  ) { }
 
-  ngOnInit(){
-    if (localStorage.getItem('token') != null)
-    {
-      console.log(this.userService.userName)
-      this.shoppingCartService.createFirstShoppingCartByUsername(this.userService.userName).subscribe();
-    } 
+  ngOnInit() {
+    if (localStorage.getItem('token') != null) {
+      this.userService.getUserName().subscribe(
+        (res: string) => {
+          this.userName = res; // Setează userName cu răspunsul primit
+          this.shoppingCartService.createFirstShoppingCartByUsername(this.userName).subscribe();
+        },
+        error => {
+          console.error('Error fetching username:', error);
+        }
+      );
+    }
   }
 }

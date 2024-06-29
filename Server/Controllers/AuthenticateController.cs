@@ -17,12 +17,15 @@ namespace Server.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AuthenticateController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+        public AuthenticateController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
+
         }
         [HttpPost]
         [Route("login")]
@@ -80,14 +83,11 @@ namespace Server.Controllers
         [HttpGet]
         [Authorize]
         [Route("GetUserName")]
-        public async Task<Object> GetUserProfile()
+        public async Task<IActionResult> GetUserName()
         {
-            string userId = User.Claims.First(c => c.Type == "Id").Value;
-            var user = await _userManager.FindByIdAsync(userId);
-            return new
-            {
-                user.UserName
-            };
+            var userName = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Name).ToString();
+
+            return Ok(userName);
         }
 
         private JwtSecurityToken GetToken(List<Claim> authClaims)

@@ -20,8 +20,11 @@ export class ShoppingCartService {
 
    createFirstShoppingCartByUsername(userName:string)
    {
-      const params = new HttpParams()
-      .set('username', userName)
-     return this.http.post(this.BaseURI+'/ShoppingCart/CreateFirstShoppingCartByUsername',{params});
+    let body = new HttpParams({
+      fromObject : {
+        'userName' : userName
+      }
+    })
+     return this.http.post(this.BaseURI+'/ShoppingCart/CreateFirstShoppingCartByUsername?userName=' + userName,body);
    }
 }
