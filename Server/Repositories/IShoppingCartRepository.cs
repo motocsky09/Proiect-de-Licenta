@@ -11,5 +11,9 @@ namespace Server.Repositories
         public void DeleteShoppingCart (string shoppingcartId);
 
         public ShoppingCart CreateFirstShoppingCartByUsername(string username);
+
+        public ProductAddedShCart AddProductInShoppingCart(ProductAddedShCart model);
+
+        public string GetShoppingCartIdByUserName(string userId);
     }
 }

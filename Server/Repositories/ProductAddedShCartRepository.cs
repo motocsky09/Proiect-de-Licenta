@@ -22,7 +22,7 @@ namespace Server.Repositories
             var productaddedshcartid = new ProductAddedShCart
             {
                 Id = model.Id,
-                UsertId = model.UsertId,
+                UserId = model.UserId,
                 ShoppingCartId = model.ShoppingCartId,
                 ProductId = model.ProductId,
                 SelectedQuantity = model.SelectedQuantity
@@ -36,7 +36,7 @@ namespace Server.Repositories
             if (existingProductAdded != null)
             {
                 existingProductAdded.Id = model.Id;
-                existingProductAdded.UsertId = model.UsertId;
+                existingProductAdded.UserId = model.UserId;
                 existingProductAdded.ShoppingCartId = model.ShoppingCartId;
                 existingProductAdded.ProductId = model.ProductId;
                 existingProductAdded.SelectedQuantity = model.SelectedQuantity;  

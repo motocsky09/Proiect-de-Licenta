@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Server.Entities;
 using Server.Repositories;
+using System.Security.Claims;
 
 namespace Server.Controllers
 {
@@ -11,11 +13,14 @@ namespace Server.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IShoppingCartRepository _shoppingcartRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ShoppingCartController(IConfiguration configuration, IShoppingCartRepository shoppingcartRepository)
+        public ShoppingCartController(IConfiguration configuration, IShoppingCartRepository shoppingcartRepository, IHttpContextAccessor httpContextAccessor)
         {
             _configuration = configuration;
             _shoppingcartRepository = shoppingcartRepository;
+            _httpContextAccessor = httpContextAccessor;
+
         }
 
         [HttpGet]
@@ -65,5 +70,14 @@ namespace Server.Controllers
             var res = _shoppingcartRepository.CreateFirstShoppingCartByUsername(userName);
             return Ok(res);
         }
+        
+        [HttpPost]
+        [Route("AddProductInShoppingCart")]
+        public ActionResult AddProductInShoppingCart(ProductAddedShCart model)
+        {
+            var res = _shoppingcartRepository.AddProductInShoppingCart(model);
+            return Ok(res);
+        }
+
     }
 }

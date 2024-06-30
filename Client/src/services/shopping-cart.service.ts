@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ export class ShoppingCartService {
    }
 
    readonly BaseURI = 'http://localhost:5098/api';
-
+  
    createFirstShoppingCartByUsername(userName:string)
    {
     let body = new HttpParams({
@@ -27,4 +27,9 @@ export class ShoppingCartService {
     })
      return this.http.post(this.BaseURI+'/ShoppingCart/CreateFirstShoppingCartByUsername?userName=' + userName,body);
    }
+
+    addProductInShoppingCart(formData: any)
+    {
+       return this.http.post(this.BaseURI+'/ShoppingCart/AddProductInShoppingCart', FormData);
+    }
 }

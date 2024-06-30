@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/services/product.service';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-products-list',
@@ -13,10 +14,14 @@ export class ProductsListComponent implements OnInit {
   faCartShopping = faCartShopping;
 
   productsList: any;
- 
+  userName: string = "";
+  shoppingCartId: string = "";
+
+
   constructor(
     private service:ProductService,
-    private router:Router
+    private router:Router,
+    private userService:UserService
   ) { }
 
   ngOnInit(){
@@ -26,6 +31,22 @@ export class ProductsListComponent implements OnInit {
       console.log(this.productsList);
       }
     )
+
+    if (localStorage.getItem('token') != null) {
+      this.userService.getUserName().subscribe(
+        (res: string) => {
+          this.userName = res; // Setează userName cu răspunsul primit
+          this.userService.getShoppingCartIdByUserName(this.userName).subscribe(
+            (res:string) =>{
+                this.shoppingCartId = res;
+            }
+          );
+        },
+        error => {
+          console.error('Error fetching username:', error);
+        }
+      );
+    }
   }
 
   getProductsList(){
@@ -38,5 +59,10 @@ export class ProductsListComponent implements OnInit {
     this.service.getProductsListByCategoryId(categoryId).subscribe(
       (res:any)=>{
         this.productsList=res;})
+  }
+
+  addProductInShoppingCart()
+  {
+    
   }
 }

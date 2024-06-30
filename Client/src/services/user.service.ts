@@ -82,4 +82,9 @@ export class UserService {
   {
     return this.isLoggedIn$.value;
   }
+
+  getShoppingCartIdByUserName(userName:string)
+  {
+    return this.http.get(this.BaseURI+'/Authenticate/GetShoppingCartIdByUserName?userName=' + userName , {responseType: 'text'});
+  }
 }

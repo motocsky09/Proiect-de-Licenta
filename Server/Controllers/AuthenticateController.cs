@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Server.Models;
+using Server.Repositories;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -18,13 +19,15 @@ namespace Server.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IShoppingCartRepository _shoppingcartRepository;
 
-        public AuthenticateController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+        public AuthenticateController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, IHttpContextAccessor httpContextAccessor, IShoppingCartRepository shoppingCartRepository)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
             _httpContextAccessor = httpContextAccessor;
+            _shoppingcartRepository = shoppingCartRepository;
 
         }
         [HttpPost]
@@ -88,6 +91,21 @@ namespace Server.Controllers
             var userName = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Name).ToString();
 
             return Ok(userName);
+        }
+
+        [HttpGet]
+        [Route("GetShoppingCartIdByUserName")]
+        public async Task<IActionResult> GetShoppingCartIdByUserName([FromQuery] string userName)
+        {
+            string shoppingCartId = "";
+            /*var userName = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Name).ToString();*/
+
+            if (userName != null)
+            {
+                shoppingCartId = _shoppingcartRepository.GetShoppingCartIdByUserName(userName);
+            }
+
+            return Ok(shoppingCartId);
         }
 
         private JwtSecurityToken GetToken(List<Claim> authClaims)

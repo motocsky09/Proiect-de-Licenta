@@ -1,4 +1,5 @@
-﻿using Server.Entities;
+﻿using Microsoft.AspNetCore.Mvc;
+using Server.Entities;
 
 namespace Server.Repositories
 {
@@ -93,6 +94,55 @@ namespace Server.Repositories
                 return result;
             }
             return null;
+        }
+
+         public ProductAddedShCart AddProductInShoppingCart(ProductAddedShCart model)
+         {
+             string userId = "";
+
+             if (model != null)
+             {
+                 var cart = _serverDbContext.ShoppingCart.FirstOrDefault(p => p.Id == model.ShoppingCartId);
+                 if (cart != null)
+                 {
+                     userId = cart.UserId;
+                 }
+             }
+
+            var productShoppingCart = new ProductAddedShCart
+            {
+                Id = model.Id,
+                UserId = model.UserId,
+                ShoppingCartId = model.ShoppingCartId,
+                ProductId = model.ProductId,
+                SelectedQuantity = model.SelectedQuantity
+            };
+
+            _serverDbContext.ProductAddedShCart.Add(productShoppingCart);
+             _serverDbContext.SaveChanges();
+
+            return productShoppingCart;
+         }
+
+        public string GetShoppingCartIdByUserName (string userName)
+        {
+            string shoppingCartId = "";
+            string userId = "";
+
+            if (!string.IsNullOrEmpty(userName))
+            {
+                var user = _identityContext.Users.FirstOrDefault(x => x.UserName == userName);
+                if (user != null)
+                {
+                    userId = user.Id;
+                }
+            }
+
+            if (userId != null)
+            {
+                shoppingCartId = _serverDbContext.ShoppingCart.FirstOrDefault(x => x.UserId == userId).Id;
+            }
+            return shoppingCartId;
         }
     }
 }
