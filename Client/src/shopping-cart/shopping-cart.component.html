@@ -14,7 +14,7 @@
             </thead>
             <tbody *ngFor="let item of productsList">
                 <tr>
-                    <td class="imagine_tabel"><img src="./assets/images/{{item.imagePath}}" alt=""><span class="descr_prod">{{ item.name }}</span></td>
+                    <td class="imagine_tabel"><img src="./assets/images/{{item.imagePath}}" alt=""></td>
                     <td class="cost_tabel"><b>{{item.price}} euro</b></td>
                     <td class="cantitate_tabel"><input readonly type="number" class="quantity-input" value={{item.selectedQuantity}} min="1"></td>
                     <td class="total_tabel"><b>{{item.sumSelectedQuantity}} euro</b></td>

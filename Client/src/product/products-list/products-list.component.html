@@ -37,8 +37,8 @@
         <button class="button_product" (click)="addProductInShoppingCart(shoppingCartId, item.id, selectedQuantity.valueAsNumber)">Adaugă în coș</button>
     </li>
 
-<div class="cart-button" id="cartButton">
-    <a href="cos-cumparaturi">
-        <fa-icon [icon]="faCartShopping"></fa-icon>Coș</a>
-   <span id="cartItemCount">+</span>
-</div>
+    <div class="cart-button" id="cartButton">
+        <a href="cos-cumparaturi">
+            <fa-icon [icon]="faCartShopping"></fa-icon>Coș</a>
+        <span id="cartItemCount">{{ cartCounter }}</span>
+    </div>    
