@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Server.Entities;
+using Server.Models;
 
 namespace Server.Repositories
 {
@@ -96,13 +97,13 @@ namespace Server.Repositories
             return null;
         }
 
-         public ProductAddedShCart AddProductInShoppingCart(ProductAddedShCart model)
+         public ProductAddedShCart AddProductInShoppingCart([FromQuery]string shoppingCartId, [FromQuery] int productId, [FromQuery] int selectedQuantity)
          {
              string userId = "";
 
-             if (model != null)
+             if (shoppingCartId != null)
              {
-                 var cart = _serverDbContext.ShoppingCart.FirstOrDefault(p => p.Id == model.ShoppingCartId);
+                 var cart = _serverDbContext.ShoppingCart.FirstOrDefault(p => p.Id == shoppingCartId);
                  if (cart != null)
                  {
                      userId = cart.UserId;
@@ -111,11 +112,11 @@ namespace Server.Repositories
 
             var productShoppingCart = new ProductAddedShCart
             {
-                Id = model.Id,
-                UserId = model.UserId,
-                ShoppingCartId = model.ShoppingCartId,
-                ProductId = model.ProductId,
-                SelectedQuantity = model.SelectedQuantity
+                //Id = model.Id,
+                UserId = userId,
+                ShoppingCartId = shoppingCartId,
+                ProductId = productId,
+                SelectedQuantity = selectedQuantity
             };
 
             _serverDbContext.ProductAddedShCart.Add(productShoppingCart);
@@ -143,6 +144,84 @@ namespace Server.Repositories
                 shoppingCartId = _serverDbContext.ShoppingCart.FirstOrDefault(x => x.UserId == userId).Id;
             }
             return shoppingCartId;
+        }
+
+        public List<ProductAddedShCart> GetShoppingCartListById(string shoppingCartId)
+        {
+            if (!string.IsNullOrEmpty(shoppingCartId))
+            {
+                var list = _serverDbContext.ProductAddedShCart.Where(x => x.ShoppingCartId == shoppingCartId).ToList();
+                return list;
+            }
+
+            return null;
+        }
+
+
+        public List<ProductResponse> GetProdutsFromShoppingById(string shoppingCartId)
+        {
+            var prodAddedShCart = new List<ProductAddedShCart>();
+            var productsList = new List<ProductResponse>();
+
+            if (!string.IsNullOrEmpty(shoppingCartId))
+            {
+                prodAddedShCart = _serverDbContext.ProductAddedShCart.Where(x => x.ShoppingCartId == shoppingCartId).OrderBy(x => x.ProductId).ToList();
+
+                if(prodAddedShCart.Count > 0)
+                {
+                    foreach (var product in prodAddedShCart) {
+                        var res = _serverDbContext.ProductAddedShCart.Where(x => x.ShoppingCartId == shoppingCartId && x.ProductId == product.ProductId).ToList();
+                        
+                        var productTmp = _serverDbContext.Product.FirstOrDefault(x => x.Id == product.ProductId);
+                        var productResponseTmp = new ProductResponse
+                        {
+                            Id = productTmp.Id,
+                            Name = productTmp.Name,
+                            Price = productTmp.Price,
+                            ShortDescription = productTmp.ShortDescription,
+                            TotalQuantity = productTmp.TotalQuantity,
+                            CategoryId = productTmp.CategoryId,
+                            ImagePath = productTmp.ImagePath
+                        };
+                        var selectedQuantityTmp = 0;
+                        var sumSelectedQuantityTmp = 0;
+                        foreach (var item in res) {
+                            selectedQuantityTmp += item.SelectedQuantity;
+                            sumSelectedQuantityTmp += (item.SelectedQuantity * productResponseTmp.Price); 
+                        }
+                        productResponseTmp.SelectedQuantity = selectedQuantityTmp;
+                        productResponseTmp.SumSelectedQuantity = sumSelectedQuantityTmp;
+
+                        bool existProduct = false;
+                        foreach (var itemExist in productsList) { 
+                            if(itemExist.Id == productResponseTmp.Id)
+                            {
+                                existProduct = true;
+                            }
+                        }
+
+                        if (!existProduct)
+                        {
+                            productsList.Add(productResponseTmp);
+                        }
+                    }
+                    return productsList;
+                }
+            }
+
+            return null;
+        }
+
+        public int GetCountProductsFromCartShopping(string shoppingCartId)
+        {
+            if (!string.IsNullOrEmpty(shoppingCartId))
+            {
+                var list = _serverDbContext.ProductAddedShCart.Where(x => x.ShoppingCartId == shoppingCartId).GroupBy(x => x.ProductId).ToList();
+                
+                return list.Count;
+            }
+
+            return 0;
         }
     }
 }

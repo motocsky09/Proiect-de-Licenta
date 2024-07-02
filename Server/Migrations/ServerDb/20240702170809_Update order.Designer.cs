@@ -12,8 +12,8 @@ using Server;
 namespace Server.Migrations.ServerDb
 {
     [DbContext(typeof(ServerDbContext))]
-    [Migration("20240623083657_First migration server")]
-    partial class Firstmigrationserver
+    [Migration("20240702170809_Update order")]
+    partial class Updateorder
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -167,11 +167,13 @@ namespace Server.Migrations.ServerDb
                     b.Property<int>("SelectedQuantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("ShoppingCartId")
-                        .HasColumnType("int");
+                    b.Property<string>("ShoppingCartId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UsertId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

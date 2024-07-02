@@ -1,4 +1,5 @@
 ﻿using Server.Entities;
+using System.Runtime.CompilerServices;
 
 namespace Server.Repositories
 {
@@ -17,24 +18,23 @@ namespace Server.Repositories
         {
             return _serverDbContext.Order.ToList();
         }
-        public void CreateOrder(Order model)
+        public void CreateOrder(string shoppingCartId, int sumDelivery, int totalSumWithDelivery)
         {
             var order = new Order
             {
-                Id = model.Id,
-                UserId = model.UserId,
-                ShoppingCartId = model.ShoppingCartId,
-                OrderDate = model.OrderDate,
-                OrderStatus = model.OrderStatus,
-                DeliveryPrice = model.DeliveryPrice,
-                Totalamount = model.Totalamount,
-                Adress = model.Adress,
-                Street_no = model.Street_no,
-                Zip_code = model.Zip_code,
-                Phone_number = model.Phone_number,
-                Email = model.Email,
-                Comments = model.Comments,
-                Payment_method = model.Payment_method
+                UserId = "",
+                ShoppingCartId = "",
+                OrderDate = DateTime.UtcNow,
+                OrderStatus = 1,
+                DeliveryPrice = sumDelivery,
+                Totalamount = totalSumWithDelivery,
+                Adress = "",
+                Street_no = "",
+                Zip_code = "",
+                Phone_number = "",
+                Email = "",
+                Comments = "",
+                Payment_method = 1
             };
             _serverDbContext.Order.Add(order);
             _serverDbContext.SaveChanges();

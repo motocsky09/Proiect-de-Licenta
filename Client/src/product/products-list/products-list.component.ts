@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ProductService } from 'src/services/product.service';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { UserService } from 'src/services/user.service';
+import { ShoppingCartService } from 'src/services/shopping-cart.service';
 
 @Component({
   selector: 'app-products-list',
@@ -16,12 +17,14 @@ export class ProductsListComponent implements OnInit {
   productsList: any;
   userName: string = "";
   shoppingCartId: string = "";
+  cartCounter: number = 0;
 
 
   constructor(
     private service:ProductService,
     private router:Router,
-    private userService:UserService
+    private userService:UserService,
+    private shoopingCartService:ShoppingCartService
   ) { }
 
   ngOnInit(){
@@ -39,6 +42,11 @@ export class ProductsListComponent implements OnInit {
           this.userService.getShoppingCartIdByUserName(this.userName).subscribe(
             (res:string) =>{
                 this.shoppingCartId = res;
+                this.shoopingCartService.getShoppingCartListById(this.shoppingCartId).subscribe(
+                  (res: any) => {
+                    this.cartCounter = res.length;
+                  }
+                )
             }
           );
         },
@@ -61,8 +69,8 @@ export class ProductsListComponent implements OnInit {
         this.productsList=res;})
   }
 
-  addProductInShoppingCart()
-  {
-    
+  addProductInShoppingCart(shoppingCartId: string, productId: number, selectedQuantity: number) {
+    this.shoopingCartService.addProductInShoppingCart(shoppingCartId, productId, selectedQuantity).subscribe();
+    this.cartCounter++;
   }
 }

@@ -12,8 +12,8 @@ using Server;
 namespace Server.Migrations.ServerDb
 {
     [DbContext(typeof(ServerDbContext))]
-    [Migration("20240630083057_modify UserId Column")]
-    partial class modifyUserIdColumn
+    [Migration("20240701145047_Update serveDbContext")]
+    partial class UpdateserveDbContext
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

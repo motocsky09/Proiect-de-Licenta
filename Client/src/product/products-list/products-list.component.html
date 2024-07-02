@@ -31,14 +31,14 @@
             </div>
             <h3 class="pret_produs"><b>Preț:</b> {{item.price}} (€)</h3>
             <div class="quantity-container">
-                <input type="number" class="quantity-input" value="1" min="1">
+                <input #selectedQuantity type="number" class="quantity-input" value="1" min="1">
             </div>
         </div>
-        <button class="button_product" onclick="addToCart(event)">Adaugă în coș</button>
+        <button class="button_product" (click)="addProductInShoppingCart(shoppingCartId, item.id, selectedQuantity.valueAsNumber)">Adaugă în coș</button>
     </li>
 
 <div class="cart-button" id="cartButton">
     <a href="cos-cumparaturi">
         <fa-icon [icon]="faCartShopping"></fa-icon>Coș</a>
-   <span id="cartItemCount">0</span>
+   <span id="cartItemCount">+</span>
 </div>

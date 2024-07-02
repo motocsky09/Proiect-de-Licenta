@@ -5,19 +5,22 @@
 namespace Server.Migrations.ServerDb
 {
     /// <inheritdoc />
-    public partial class modifyShoppingCartIdColumn : Migration
+    public partial class Updatetwoorder : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "UsertId",
-                table: "ProductAddedShCart",
-                newName: "UserId");
+            migrationBuilder.AlterColumn<string>(
+                name: "UserId",
+                table: "Order",
+                type: "nvarchar(max)",
+                nullable: false,
+                oldClrType: typeof(int),
+                oldType: "int");
 
             migrationBuilder.AlterColumn<string>(
                 name: "ShoppingCartId",
-                table: "ProductAddedShCart",
+                table: "Order",
                 type: "nvarchar(max)",
                 nullable: false,
                 oldClrType: typeof(int),
@@ -27,14 +30,17 @@ namespace Server.Migrations.ServerDb
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
+            migrationBuilder.AlterColumn<int>(
                 name: "UserId",
-                table: "ProductAddedShCart",
-                newName: "UsertId");
+                table: "Order",
+                type: "int",
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
 
             migrationBuilder.AlterColumn<int>(
                 name: "ShoppingCartId",
-                table: "ProductAddedShCart",
+                table: "Order",
                 type: "int",
                 nullable: false,
                 oldClrType: typeof(string),

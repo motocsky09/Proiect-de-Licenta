@@ -21,7 +21,7 @@ export class UserService {
     this.isLoggedIn$ = new BehaviorSubject(isLoggedIn);
    }
 
-   readonly BaseURI = 'http://localhost:5098/api';
+   readonly BaseURI = 'https://localhost:64486/api';
 
    formModel = this.fb.group({
     UserName :['',Validators.required],

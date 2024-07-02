@@ -3,7 +3,7 @@
     flex-direction: column; /* Elemente aranjate vertical */
     align-items: center;
     margin: 20px auto;
-    width: 50%; /* Setăm lățimea să fie aceeași ca la login-form */
+    width:21%; /* Setăm lățimea să fie aceeași ca la login-form */
 }
 .auth-header {
     display: flex;
@@ -18,7 +18,7 @@
     background-color: black;
     color: rgb(230, 229, 222);
     padding: 15px 45px;
-    border: 1px white solid;
+    transition: 0.5s;
 }
 .buton-user a {
     color: white;
@@ -27,5 +27,5 @@
 }
 .buton-user:hover {
     cursor: pointer;
-    background-color: rgb(86, 86, 86);
+    background: rgba(86, 86, 86, 0.453);
 }

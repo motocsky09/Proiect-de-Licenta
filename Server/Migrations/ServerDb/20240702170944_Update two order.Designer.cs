@@ -12,8 +12,8 @@ using Server;
 namespace Server.Migrations.ServerDb
 {
     [DbContext(typeof(ServerDbContext))]
-    [Migration("20240630082757_modify ShoppingCartId Column")]
-    partial class modifyShoppingCartIdColumn
+    [Migration("20240702170944_Update two order")]
+    partial class Updatetwoorder
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,8 +78,9 @@ namespace Server.Migrations.ServerDb
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ShoppingCartId")
-                        .HasColumnType("int");
+                    b.Property<string>("ShoppingCartId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Street_no")
                         .IsRequired()
@@ -88,8 +89,9 @@ namespace Server.Migrations.ServerDb
                     b.Property<int>("Totalamount")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Zip_code")
                         .IsRequired()
@@ -171,8 +173,9 @@ namespace Server.Migrations.ServerDb
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

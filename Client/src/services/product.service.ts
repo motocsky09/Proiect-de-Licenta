@@ -16,7 +16,7 @@ export class ProductService {
 
      }
 
-     readonly BaseURI = 'http://localhost:5098/api';
+     readonly BaseURI = 'https://localhost:64486/api';
 
      getProductsList()
      {

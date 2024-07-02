@@ -29,10 +29,12 @@ h1{
     padding: 15px 32px;
     text-decoration: none;
     margin: 20px auto;
+    cursor: pointer;
 }
 .buton a:hover{
 	background-color: #555;
     color: white;
+    transition: 1s;
 }
 
 .show {

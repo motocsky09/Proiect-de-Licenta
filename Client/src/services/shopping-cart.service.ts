@@ -16,7 +16,7 @@ export class ShoppingCartService {
 
    }
 
-   readonly BaseURI = 'http://localhost:5098/api';
+   readonly BaseURI = 'https://localhost:64486/api';
   
    createFirstShoppingCartByUsername(userName:string)
    {
@@ -28,8 +28,44 @@ export class ShoppingCartService {
      return this.http.post(this.BaseURI+'/ShoppingCart/CreateFirstShoppingCartByUsername?userName=' + userName,body);
    }
 
-    addProductInShoppingCart(formData: any)
-    {
-       return this.http.post(this.BaseURI+'/ShoppingCart/AddProductInShoppingCart', FormData);
+    addProductInShoppingCart(shoppingCartId: string, productId: number, selectedQuantity: number)
+    {  
+       let body = new HttpParams({
+         fromObject : {
+          'shoppingCartId' : shoppingCartId,
+          'productId' : productId,
+          'selectedQuantity' : selectedQuantity
+         }
+       })
+       return this.http.post(this.BaseURI+'/ShoppingCart/AddProductInShoppingCart?shoppingCartId=' 
+        + shoppingCartId + "&productId=" + productId + "&selectedQuantity=" + selectedQuantity, body);
     }
+
+   getShoppingCartListById(shoppingCartId:string)
+   {
+     return this.http.get(this.BaseURI+'/ShoppingCart/GetShoppingCartListById?shoppingCartId=' + shoppingCartId);
+   }
+
+   getProdutsFromShoppingById(shoppingCartId:string)
+   {
+     return this.http.get(this.BaseURI+'/ShoppingCart/GetProdutsFromShoppingById?shoppingCartId=' + shoppingCartId);
+   }
+
+   getCountProductsFromCartShopping(shoppingCartId:string)
+   {
+     return this.http.get(this.BaseURI+'/ShoppingCart/GetCountProductsFromCartShopping?shoppingCartId=' + shoppingCartId);
+   }
+
+   createOrder(shoppingCartId:string, sumDelivery:number, totalSumWithDelivery: number)
+   {
+    let body = new HttpParams({
+      fromObject : {
+        'shoppingCartId' : shoppingCartId,
+        'sumDelivery' : sumDelivery,
+        'totalSumWithDelivery' : totalSumWithDelivery
+      }
+    })
+     return this.http.post(this.BaseURI+'/Order/CreateOrder?shoppingCartId=' + shoppingCartId
+      + "&sumDelivery=" + sumDelivery + "&totalSumWithDelivery=" + totalSumWithDelivery, body);
+   }
 }

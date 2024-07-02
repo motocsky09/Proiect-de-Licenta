@@ -1,29 +1,26 @@
-.login-loc {
-    display: flex;
-    justify-content: center;
-    width: 100%; /* Setăm lățimea să fie 100% din părinte */
-    margin: 0; /* Eliminăm marginile pentru a fi lipită de auth-header */
-}
+
 .login-form {
     width: 100%; /* Setăm lățimea să fie 100% din părinte */
     text-align: center;
     background: black;
     margin-bottom: 50px;
     border: 1px solid dimgray;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 .form-group label {
     font-weight: 400;
-    font-size: 25px;
-    color: rgb(230, 229, 222);
-    padding-top: 5%;
+    font-size: 18px;
+    color: white;
+    padding-top: 3px;
 }
+
 .form-group input {
-    width: 80%;
+    width: 85%;
     margin: auto;
     text-align: center;
-    background-color: rgb(230, 229, 222);
+    padding: 2px;
+    margin-bottom: 15px;
 }
 .hero-btn {
     display: inline-block;
@@ -35,14 +32,14 @@
     background: transparent;
     position: relative;
     cursor: pointer;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-bottom: 15px;
 }
 .hero-btn:hover {
     border: 1px solid rgb(86, 86, 86);
-    background: rgb(86, 86, 86);
-    color: black;
+    background: rgba(86, 86, 86, 0.453);
+    color: white;
 }
+
 @media (max-width: 700px) {
     .login-form, .auth-form {
         width: 100%; /* Asigurăm că se ajustează la ecranul mai mic */

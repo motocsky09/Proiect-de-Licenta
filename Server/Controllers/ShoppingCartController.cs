@@ -73,11 +73,38 @@ namespace Server.Controllers
         
         [HttpPost]
         [Route("AddProductInShoppingCart")]
-        public ActionResult AddProductInShoppingCart(ProductAddedShCart model)
+        public ActionResult AddProductInShoppingCart(string shoppingCartId, int productId, int selectedQuantity)
         {
-            var res = _shoppingcartRepository.AddProductInShoppingCart(model);
+            var res = _shoppingcartRepository.AddProductInShoppingCart(shoppingCartId, productId, selectedQuantity);
             return Ok(res);
         }
 
+
+        [HttpGet]
+        [Route("GetShoppingCartListById")]
+        public ActionResult GetShoppingCartListById([FromQuery]string shoppingCartId)
+        {
+            var res = _shoppingcartRepository.GetShoppingCartListById(shoppingCartId);
+            return Ok(res);
+        }
+
+        [HttpGet]
+        [Route("GetProdutsFromShoppingById")]
+        public ActionResult GetProdutsFromShoppingById([FromQuery] string shoppingCartId)
+        {
+            var res = _shoppingcartRepository.GetProdutsFromShoppingById(shoppingCartId);
+
+            return Ok(res);
+        }
+
+
+        [HttpGet]
+        [Route("GetCountProductsFromCartShopping")]
+        public ActionResult GetCountProductsFromCartShopping([FromQuery] string shoppingCartId)
+        {
+            var res = _shoppingcartRepository.GetCountProductsFromCartShopping(shoppingCartId);
+
+            return Ok(res);
+        }
     }
 }

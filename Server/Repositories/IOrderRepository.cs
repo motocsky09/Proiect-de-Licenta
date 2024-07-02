@@ -7,7 +7,7 @@ namespace Server.Repositories
         public Order GetOrderById(int orderid);
 
         public List<Order> GetOrders();
-        public void CreateOrder(Order model);
+        public void CreateOrder(string shoppingCartId, int sumDelivery, int totalSumWithDelivery);
 
         public void UpdateOrder(Order model);
 

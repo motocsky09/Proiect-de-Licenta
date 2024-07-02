@@ -1,4 +1,5 @@
 ﻿using Server.Entities;
+using Server.Models;
 
 namespace Server.Repositories
 {
@@ -12,8 +13,12 @@ namespace Server.Repositories
 
         public ShoppingCart CreateFirstShoppingCartByUsername(string username);
 
-        public ProductAddedShCart AddProductInShoppingCart(ProductAddedShCart model);
+        public ProductAddedShCart AddProductInShoppingCart(string shoppingCartId, int productId, int selectedQuantity);
 
         public string GetShoppingCartIdByUserName(string userId);
+
+        public List<ProductAddedShCart> GetShoppingCartListById(string shoppingCartId);
+        List<ProductResponse> GetProdutsFromShoppingById(string shoppingCartId);
+        public int GetCountProductsFromCartShopping(string shoppingCartId);
     }
 }
