@@ -2,7 +2,7 @@
 .introduction {
     text-align: center;
     padding: 50px;
-    color: black;
+    color: #252525;
 }
 .introduction-content{
     padding: 10px;
@@ -16,16 +16,16 @@
 
 }
 h1{
-    color: rgb(230,229,222);
+    color: #7D7D7D;
 }
 .buton{
     padding: 30px;
 }
 
 .buton .buton1 {
-    background-color: black;
+    background-color: #3855E8;
     border-radius: 30px;
-    color: rgb(230,229,222);
+    color: #EEEEEE;
     padding: 15px 32px;
     text-decoration: none;
     margin: 20px auto;
@@ -34,7 +34,6 @@ h1{
 .buton a:hover{
 	background-color: #555;
     color: white;
-    transition: 1s;
 }
 
 .show {
@@ -55,14 +54,14 @@ h1{
     flex-direction: column; /* aliniere verticală a elementelor */
 }
 .title{
-	color: black;
+	color: #252525;
 	font-size: 30px;
 	
 }
 .accordion-item {
     width: 100%;
-    border-bottom: 1px solid #ccc;
-	border-top: 1px solid #ccc;
+    border-bottom: 3px solid #3855E8;
+	border-top: 3px solid #3855E8;
     margin-bottom: 10px;
 }
 .accordion-header {
@@ -84,7 +83,7 @@ h1{
 }
 
 .accordion-header i {
-    color: black; /* Schimbă culoarea plusului și minusului */
+    color: #252525; /* Schimbă culoarea plusului și minusului */
     margin-left: 10px; /* Adăugăm un spațiu între simbol și text */
 }
 .description {
@@ -92,11 +91,13 @@ h1{
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     width: 100%;
+    font-size: 17px;
     text-align: center; /* pentru a centra pe orizontală */
     margin: 0; /* eliminăm marginile */
-	color: black;
-	background-color: rgb(221, 220, 212);
-	border-radius: 20px;
+	color: #EEEEEE;
+	background-color: #0D1321;
+	border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
 }
 .description p {
     margin: 10px 0; /* Adaugă spațiu între paragrafe */
@@ -105,7 +106,7 @@ h1{
 	color: red;
 }
 .paragraf_desc p{
-	border-bottom: 1px solid #b6b6b6;
+	border-bottom: 0.5px solid #393E46;
     padding: 10px;
 }
 
