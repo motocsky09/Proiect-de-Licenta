@@ -12,23 +12,20 @@
     <div class="product-item">
         <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-card-front">
+                <div class="flip-card-front" (click)="toggleDescription($event)">
                         <img src="./assets/images/{{item.imagePath}}" alt="product_image" height="400" width="200">
                 </div>
-                    <div class="flip-card-back">
-                        <div class="description-container">
-                          <!--  
-                            <p class="desc_product2">{{ item.shortDescription }}</p>
-                            -->
-                        </div>
+                    <div class="description-container">    
+                        <p class="desc_product2">{{ item.shortDescription }}</p>
                     </div>
             </div>
         </div>
     </div>
         <div class="details">
-            <div class="Short_description">
+            <!--<div class="Short_description">
             <p><b>{{item.shortDescription}}</b></p>
             </div>
+        -->
             <h3 class="pret_produs"><b>Preț:</b> {{item.price}} (€)</h3>
             <div class="quantity-container">
                 <input #selectedQuantity type="number" class="quantity-input" value="1" min="1">

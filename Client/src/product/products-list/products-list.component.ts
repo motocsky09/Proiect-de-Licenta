@@ -18,6 +18,7 @@ export class ProductsListComponent implements OnInit {
   userName: string = "";
   shoppingCartId: string = "";
   cartCounter: number = 0;
+  selectedQuantity: any;
 
   constructor(
     private service:ProductService,
@@ -78,8 +79,14 @@ getProductsListByCategoryId(categoryId:any){
     );
 }
 
+toggleDescription(event: Event) {
+    const descriptionContainer = (event.target as HTMLElement).closest('.product-item')?.querySelector('.description-container');
+    if (descriptionContainer) {
+      descriptionContainer.classList.toggle('open');
+    }
+}
 
-  addProductInShoppingCart(shoppingCartId: string, productId: number, selectedQuantity: number) {
+addProductInShoppingCart(shoppingCartId: string, productId: number, selectedQuantity: number) {
     this.shoopingCartService.addProductInShoppingCart(shoppingCartId, productId, selectedQuantity).subscribe(
       () => {
         this.cartCounter += selectedQuantity;

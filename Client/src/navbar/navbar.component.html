@@ -1,14 +1,25 @@
 <div>
 	<nav class="navbar">
-		<div class="nav-links">
-			<ul class="logo">
-				<li class="logo"><a href="home"><img src="./assets/images/logo5.png" alt="logo" width="100"></a></li>
-			</ul>
-			
-			<div class="nav-right">
-				<div *ngIf="(isLog())"><a class="logout-link" style="cursor: pointer;" (click)="onLogout()" routerLinkActive='active'>DECONECTARE</a></div>
-				<button class="buton"><a class="auth-btn" href="user/login"><img src="./assets/images/auth.png" alt="authentification" width="30" height="30"></a></button>
-			</div>
+	  <div class="nav-links">
+		<ul class="logo">
+		  <li class="logo"><a href="home"><img src="./assets/images/logo5.png" alt="logo" width="100"></a></li>
+		</ul>
+		
+		<div class="nav-right">
+		  <button class="buton" (click)="toggleSidebar()">
+			<img src="./assets/images/auth.png" alt="authentification" width="35" height="35">
+		  </button>
 		</div>
+	  </div>
 	</nav>
-</div>
+  
+	<div class="sidebar" *ngIf="isSidebarOpen">
+	  <ul>
+		<li *ngIf="!isLog()"><a href="/user/register">Înregistrare</a></li>
+		<li *ngIf="!isLog()"><a href="/user/login">Autentificare</a></li>
+		<li *ngIf="isLog()"><a href="/user">Cont</a></li>
+		<li *ngIf="isLog()"><a (click)="onLogout()">Deconectare</a></li>
+	  </ul>
+	</div>
+  </div>
+  
